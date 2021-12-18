@@ -1,4 +1,4 @@
-#from pipe import select
+from pipe import select, where
 import numpy as np
 import functools as ft
 
@@ -17,10 +17,22 @@ board=list(map(string_to_matrix,board))
 
 state=[np.zeros((5,5),dtype=int) for i in range(0,len(board))]
 
+# def check_bingo (m):
+# 	m=np.asarray(m)
+# 	bingo=ft.reduce(lambda x,y: x|y,map(lambda v:ft.reduce(lambda x,y:x*y,v),np.concatenate((m,m.transpose(),[np.diag(m)],[np.diag(np.fliplr(m))])))) 
+# 	return(bingo)
+
+
 def check_bingo (m):
 	m=np.asarray(m)
-	bingo=ft.reduce(lambda x,y: x|y,map(lambda v:ft.reduce(lambda x,y:x*y,v),np.concatenate((m,m.transpose(),[np.diag(m)],[np.diag(np.fliplr(m))])))) 
+	l=np.concatenate((m,m.transpose(),[np.diag(m)],[np.diag(np.fliplr(m))]))
+	# bingo=list(l
+	# 	|select(lambda v:ft.reduce(lambda x,y:x*y,v))
+	# 	|lambda x,y: x|y
+	# 	)
+	bingo=ft.reduce(lambda x,y: x|y,map(lambda v:ft.reduce(lambda x,y:x*y,v),l))
 	return(bingo)
+
 
 def find_matching(m,s,v):
 	x=np.where(m==v)
