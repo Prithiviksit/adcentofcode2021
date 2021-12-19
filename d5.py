@@ -4,8 +4,6 @@ import functools as ft
 
 with open("input5.txt") as f:
     lines = f.read().split("\n") 
-#    move = list(map(int,lines.split('\n\n')[0].split(",")))
-#    board = lines.split('\n\n')[1:]
 
 
 def extract_position(x):
@@ -19,7 +17,7 @@ lines=list(map(extract_position,lines))
 lines.pop(-1)
 
 
-## find the maximum position
+
 pos_max=max(np.concatenate(np.concatenate(lines)))
 board=np.zeros((pos_max+1,pos_max+1),dtype=int)
 

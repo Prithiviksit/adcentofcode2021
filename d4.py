@@ -17,12 +17,6 @@ board=list(map(string_to_matrix,board))
 
 state=[np.zeros((5,5),dtype=int) for i in range(0,len(board))]
 
-# def check_bingo (m):
-# 	m=np.asarray(m)
-# 	bingo=ft.reduce(lambda x,y: x|y,map(lambda v:ft.reduce(lambda x,y:x*y,v),np.concatenate((m,m.transpose(),[np.diag(m)],[np.diag(np.fliplr(m))])))) 
-# 	return(bingo)
-
-
 def check_bingo (m):
 	m=np.asarray(m)
 	l=np.concatenate((m,m.transpose(),[np.diag(m)],[np.diag(np.fliplr(m))]))
@@ -52,27 +46,13 @@ for key in move:
 	bingo=list(map(check_bingo,state))
 	if sum(bingo)-sum(bingo0)==1 and sum(map(lambda x:1-x,bingo))==0:
 		break
-	#if ft.reduce(lambda x,y:x|y,bingo):
-	#	break
-
 
 print(key)
-#winner=bingo.index(1)
-#circled=np.where(state[winner]==1)
-#notcircled=np.where(state[winner]==0)
-
-#print(sum(np.asarray(board[winner][notcircled])[0]))
-
-#print(sum(np.asarray(board[winner][circled])[0]))
-#print(1137*5)
 
 lastwinner=bingo0.index(0)
 notcircled=np.where(state[lastwinner]==0)
 print(sum(np.asarray(board[lastwinner][notcircled])[0]))
 
 
-# for i in move:
-# 	for j in range(0,len(board)):
-# 		s[j]=find_matching(board[j],state[j],move[i])
 
 

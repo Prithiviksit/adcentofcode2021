@@ -1,4 +1,3 @@
-from pipe import select, where
 import numpy as np
 import functools as ft
 from collections import Counter
@@ -28,23 +27,12 @@ def one_day(v):
 	return(v2)
 
 
-# for i in range(0,80):
-# 	number=one_day(number)
+
 
 for i in range(0,256):
 	number=one_day(number)
 
 
-# def one_day(dic):
-# 	dic2={}
-# 	for i in range(0,8):
-# 		if i not in dic:
-# 			dic2[i]=0
-# 		elif i==0:
-# 			dic2[8]=dic[0]
-
-
-# 	pass
 
 
 
